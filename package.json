@@ -1,0 +1,22 @@
+{
+  "name": "twapp",
+  "version": "1.0.0",
+  "description": "Twilio App",
+  "main": "twapp.js",
+  "scripts": {
+    "test": "node twapp.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julianfrank/twiliotry.git"
+  },
+  "author": "Julian Frank",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julianfrank/twiliotry/issues"
+  },
+  "homepage": "https://github.com/julianfrank/twiliotry#readme",
+  "dependencies": {
+    "xml": "^1.0.1"
+  }
+}
