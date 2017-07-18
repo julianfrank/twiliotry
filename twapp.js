@@ -44,7 +44,7 @@ const server = http.createServer((req, res) => {
         bodyJson = querystring.parse(body)
         console.log('Body', bodyJson)
 
-        .setHeader('Content-Type', 'application/xml')
+        res.setHeader('Content-Type', 'application/xml')
 
         switch (req.url) {
             case "/":
