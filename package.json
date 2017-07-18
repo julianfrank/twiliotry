@@ -4,7 +4,8 @@
   "description": "Twilio App",
   "main": "twapp.js",
   "scripts": {
-    "test": "node twapp.js"
+    "test": "node twapp.js",
+    "start": "node twapp.js"
   },
   "repository": {
     "type": "git",
