@@ -47,8 +47,8 @@ const server = http.createServer((req, res) => {
 
         switch (req.url) {
             case "/":
-                console.log(req.method, req.url)
-                console.log('Body', bodyJson)
+                console.log(req.method, req.url, 'Body', bodyJson)
+                res.statusCode = 200
                 res.end(req.method + req.url + JSON.stringify(req.headers))
                 break
             case "/call":
@@ -72,10 +72,9 @@ const server = http.createServer((req, res) => {
                 res.end(pResultXML)
                 break
             default:
-                res.statusCode = 404
+                res.statusCode = 200
                 res.end(req.method + req.url)
-                console.log(req.method, req.url, req.headers["referer"])
-                console.log('Body', bodyJson)
+                console.log(req.method, req.url, 'Body', bodyJson)
         }
     })
 })
