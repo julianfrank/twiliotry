@@ -16,10 +16,14 @@ const querystring = require('querystring'),
         }]
     },
     resultJSON = {
-        Say: "Hi Buddy Result"
+        Response: [{
+            Say: "Hi Buddy Result"
+        }]
     },
     pResultJSON = {
-        Say: "Hi Buddy Pee Pee Pee result"
+        Response: [{
+            Say: "Hi Buddy Pee Pee Pee result"
+        }]
     }
 
 const callXML = xml(callJSON, {
