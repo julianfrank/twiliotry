@@ -47,29 +47,28 @@ const server = http.createServer((req, res) => {
         switch (req.url) {
             case "/":
                 console.log(req.method, req.url)
-                res.write(req.method + req.url + JSON.stringify(req.headers))
+                res.end(req.method + req.url + JSON.stringify(req.headers))
                 break
             case "/call":
                 console.log(req.method, req.url, "Sending:", callXML)
-                res.statusCode=200
-                res.write(callXML)
+                res.statusCode = 200
+                res.end(callXML)
                 break
             case "/result":
                 console.log(req.method, req.url, "Sending:", resultXML)
-                res.statusCode=200
-                res.write(resultXML)
+                res.statusCode = 200
+                res.end(resultXML)
                 break
             case "/partialresult":
                 console.log(req.method, req.url, "Sending:", pResultXML)
-                res.statusCode=200
-                res.write(pResultXML)
+                res.statusCode = 200
+                res.end(pResultXML)
                 break
             default:
-            res.statusCode=404
-                res.write(req.method + req.url)
+                res.statusCode = 404
+                res.end(req.method + req.url)
                 console.log(req.method, req.url, req.headers["referer"])
         }
-        res.end()
     })
 })
 server.on('clientError', (err, socket) => {
