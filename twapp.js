@@ -42,27 +42,32 @@ const server = http.createServer((req, res) => {
     });
     req.on('end', () => {
         bodyJson = querystring.parse(body)
-        console.log('Body', bodyJson)
 
         res.setHeader('Content-Type', 'application/xml')
 
         switch (req.url) {
             case "/":
                 console.log(req.method, req.url)
+                console.log('Body', bodyJson)
                 res.end(req.method + req.url + JSON.stringify(req.headers))
                 break
             case "/call":
-                console.log(req.method, req.url, "Sending:", callXML)
+                console.log(req.method, req.url, "CallSID", bodyJson["CallSid"])
+                res.statusCode = 200
+                res.end(callXML)
+                break
+            case "/callstatus":
+                console.log(req.method, req.url, "CallSID", bodyJson["CallSid"])
                 res.statusCode = 200
                 res.end(callXML)
                 break
             case "/result":
-                console.log(req.method, req.url, "Sending:", resultXML)
+                console.log(req.method, req.url, "SpeechResult:", bodyJson["SpeechResult"], bodyJson["Confidence"])
                 res.statusCode = 200
                 res.end(resultXML)
                 break
             case "/partialresult":
-                console.log(req.method, req.url, "Sending:", pResultXML)
+                console.log(req.method, req.url, "UnstableSpeechResult:", bodyJson["UnstableSpeechResult"], "StableSpeechResult:", bodyJson["StableSpeechResult"])
                 res.statusCode = 200
                 res.end(pResultXML)
                 break
@@ -70,6 +75,7 @@ const server = http.createServer((req, res) => {
                 res.statusCode = 404
                 res.end(req.method + req.url)
                 console.log(req.method, req.url, req.headers["referer"])
+                console.log('Body', bodyJson)
         }
     })
 })
